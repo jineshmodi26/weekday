@@ -39,11 +39,12 @@ const Jobs = () => {
     }, []);
 
     const fetchMoreData = () => {
+        console.log(offset)
         axios({
             method: "POST",
             url: "https://api.weekday.technology/adhoc/getSampleJdJSON",
             data: {
-                limit: 50,
+                limit: 30,
                 offset: offset
             },
             headers: {
@@ -56,7 +57,7 @@ const Jobs = () => {
           })
           .catch((err) => console.log(err));
     
-        setOffset((prevOffset) => prevOffset + 50);
+        setOffset((prevOffset) => prevOffset + 30);
       };
 
       const filteredJobs = jobData.filter(job => {

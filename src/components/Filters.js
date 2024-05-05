@@ -7,13 +7,15 @@ import {
     MenuItem,
     Grid
 } from "@mui/material"
+import store from "../redux/store"
+import {useSelector} from "react-redux"
 
 const Filters = () => {
 
-    const [role, setRole] = useState("")
+    const filters = useSelector((state) => state.reducer.filters)
 
     const handleChange = (e) => {
-        setRole(e.target.value)
+        
     }
 
     return (
@@ -27,9 +29,9 @@ const Filters = () => {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={role}
+                            value={filters.role}
                             label="Role"
-                            onChange={handleChange}
+                            onChange={(e) => {handleChange("role", e.target.value)}}
                         >
                             <MenuItem value="">None</MenuItem>
                             <MenuItem value="frontend">Frontend</MenuItem>

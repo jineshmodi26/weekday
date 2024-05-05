@@ -43,7 +43,7 @@ const Jobs = () => {
             method: "POST",
             url: "https://api.weekday.technology/adhoc/getSampleJdJSON",
             data: {
-                limit: 10,
+                limit: 50,
                 offset: offset
             },
             headers: {
@@ -56,7 +56,7 @@ const Jobs = () => {
           })
           .catch((err) => console.log(err));
     
-        setOffset((prevOffset) => prevOffset + 10);
+        setOffset((prevOffset) => prevOffset + 50);
       };
 
       const filteredJobs = jobData.filter(job => {

@@ -6,12 +6,14 @@ import Jobs from '../components/Jobs'
 const SearchJobs = () => {
   return (
     <Box sx={{
-        padding: "40px"
+        padding: "20px"
     }}>
         <Box>
             <Filters />
         </Box>
-        <Box>
+        <Box sx={{
+            marginTop: "10px"
+        }}>
             <Jobs />
         </Box>
     </Box>

@@ -14,6 +14,7 @@ const Jobs = () => {
     const [offset, setOffset] = useState(0)
     const [loading, setLoading] = useState(false)
     const jobData = useSelector((state) => state.reducer.jobs)
+    const filters = useSelector((state) => state.reducer.filters)
 
     useEffect(() => {
         axios({
@@ -56,10 +57,25 @@ const Jobs = () => {
         setOffset((prevOffset) => prevOffset + 10);
       };
 
+      const filteredJobs = jobData.filter(job => {
+        // Check if the job matches the filter criteria
+        const meetsMinExperience = job.minExp >= filters.minExperience;
+        const matchesCompanyName = filters.companyName === "" || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase());
+        const matchesLocation = filters.location === "" || job.location.toLowerCase().includes(filters.location.toLowerCase());
+        // const matchesRemote = filters.remote === "" || job.location.toLowerCase() === filters.remote.toLowerCase();
+        const matchesRole = filters.role === "" || job.jobRole.toLowerCase().includes(filters.role.toLowerCase());
+        const meetsMinJdSalary = job.minJdSalary >= filters.minJdSalary;
+    
+        // Return true if all filter criteria are met
+        return meetsMinExperience && matchesCompanyName && matchesLocation && matchesRole && meetsMinJdSalary;
+    });
+
+    console.log(filteredJobs.length)
+
   return (
 
     <InfiniteScroll
-      dataLength={jobData.length}
+      dataLength={filteredJobs.length}
       next={fetchMoreData}
       hasMore={hasMore}
       scrollThreshold={0.99}
@@ -68,7 +84,7 @@ const Jobs = () => {
       <Box>
         <Grid container spacing={3}>
             {
-                loading ? jobData.map((job) => {
+                loading ? filteredJobs.map((job) => {
                     return <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={job.jdUid}>
                         <OutlinedCard job={job}/>
                     </Grid>

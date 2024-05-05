@@ -9,7 +9,7 @@ const initialState = {
         remote: "",
         techStack: "",
         role: "",
-        minBasePay: 0
+        minJdSalary: 0
     }
 }
 
@@ -23,7 +23,10 @@ const reducer =  (state=initialState, action) => {
         case constants.SET_FILTERS:
             return {
                 ...state,
-                filters: action.payload.filters
+                filters: {
+                    ...state.filters,
+                    [action.payload.key]: action.payload.value
+                }
             } 
         default:
             return state

@@ -10,12 +10,12 @@ import actions from "../redux/actions"
 
 const Jobs = () => {
 
+    const jobData = useSelector((state) => state.reducer.jobs)
+    const filters = useSelector((state) => state.reducer.filters)
     const [hasMore, setHasMore] = useState(true)
     const [offset, setOffset] = useState(0)
     const [loading, setLoading] = useState(false)
     const [count, setCount] = useState()
-    const jobData = useSelector((state) => state.reducer.jobs)
-    const filters = useSelector((state) => state.reducer.filters)
 
     useEffect(() => {
         axios({
@@ -38,6 +38,7 @@ const Jobs = () => {
         })
     }, []);
 
+    //called when scroll 99% of a display size
     const fetchMoreData = () => {
         console.log(offset)
         axios({

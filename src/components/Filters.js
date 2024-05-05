@@ -20,6 +20,11 @@ const Filters = () => {
         if (key === "minExperience" && value < 0) {
             value = 0
         }
+        if (key === "minJdSalary" && value < 0) {
+            value = 0
+        }
+
+        //change filters value in redux store
         store.dispatch(actions.setFilters({key: key, value: value}))
     }
 

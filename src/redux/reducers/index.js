@@ -7,7 +7,6 @@ const initialState = {
         companyName: "",
         location: "",
         remote: "",
-        techStack: "",
         role: "",
         minJdSalary: 0
     }

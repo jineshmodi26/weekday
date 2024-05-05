@@ -27,17 +27,17 @@ const Filters = () => {
         <Grid container spacing={2} sx={{
             padding: "10px"
         }}>
-            <Grid item lg={2} xl={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Box>
-                    <TextField type="number" value={filters.minExperience} onChange={(e) => handleChange("minExperience", e.target.value)} label="Minimum Exp."/>
+                    <TextField type="number" fullWidth value={filters.minExperience} onChange={(e) => handleChange("minExperience", e.target.value)} label="Minimum Exp."/>
                 </Box>
             </Grid>
-            <Grid item lg={2} xl={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Box>
-                    <TextField type="text" value={filters.companyName} onChange={(e) => handleChange("companyName", e.target.value)} label="Company Name"/>
+                    <TextField type="text" fullWidth value={filters.companyName} onChange={(e) => handleChange("companyName", e.target.value)} label="Company Name"/>
                 </Box>
             </Grid>
-            <Grid item lg={2} xl={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Box>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Location</InputLabel>
@@ -58,14 +58,14 @@ const Filters = () => {
                     </FormControl>
                 </Box>
             </Grid>
-            <Grid item lg={2} xl={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Box>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Remote/on-site</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value=""
+                            value={filters.remote}
                             label="Remote"
                             onChange={(e) => {handleChange("remote", e.target.value)}}
                         >
@@ -76,12 +76,12 @@ const Filters = () => {
                     </FormControl>
                 </Box>
             </Grid>
-            <Grid item lg={2} xl={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Box>
-                    <TextField type="number" value={filters.minJdSalary} onChange={(e) => handleChange("minJdSalary", e.target.value)} label="Minimum Salary"/>
+                    <TextField type="number" fullWidth value={filters.minJdSalary} onChange={(e) => handleChange("minJdSalary", e.target.value)} label="Minimum Salary"/>
                 </Box>
             </Grid>
-            <Grid item lg={2} xl={2}>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Box>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Role</InputLabel>
